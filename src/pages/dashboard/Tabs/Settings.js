@@ -62,7 +62,7 @@ function Settings(props) {
 
                 <div className="text-center border-bottom p-4">
                     <div className="mb-4 profile-user">
-                        <img src={avatar1} className="rounded-circle avatar-lg img-thumbnail" alt="EditChat" />
+                        <img src={avatar1} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
                         <Button type="button" color="light" className="avatar-xs p-0 rounded-circle profile-photo-edit">
                             <i className="ri-pencil-fill"></i>
                         </Button>

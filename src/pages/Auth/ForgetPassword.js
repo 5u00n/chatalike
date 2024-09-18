@@ -50,7 +50,7 @@ const ForgetPassword = (props) => {
         return <Navigate to="/" />;
     }
 
-    document.title = "Forgot Password | EditChat React - Responsive Bootstrap 5 Chat App"
+    document.title = "Forgot Password | ChatAlike React - Responsive Bootstrap 5 Chat App"
 
 
     return (
@@ -66,7 +66,7 @@ const ForgetPassword = (props) => {
                                 </Link>
 
                                 <h4>{t('Reset Password')}</h4>
-                                <p className="text-muted mb-4">{t('Reset Password With EditChat.')}</p>
+                                <p className="text-muted mb-4">{t('Reset Password With ChatAlike.')}</p>
 
                             </div>
 
@@ -116,7 +116,7 @@ const ForgetPassword = (props) => {
 
                             <div className="mt-5 text-center">
                                 <p>{t('Remember It')} ? <Link to="login" className="font-weight-medium text-primary"> {t('Signin')} </Link> </p>
-                                <p>© {new Date().getFullYear()} {t('EditChat')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
+                                <p>© {new Date().getFullYear()} {t('ChatAlike')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
                             </div>
                         </Col>
                     </Row>

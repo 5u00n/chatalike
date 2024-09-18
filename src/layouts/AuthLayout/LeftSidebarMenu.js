@@ -142,7 +142,7 @@ function LeftSidebarMenu(props) {
                         </UncontrolledTooltip>
                         <Dropdown nav isOpen={dropdownOpenMobile} toggle={toggleMobile} className="profile-user-dropdown d-inline-block d-lg-none dropup">
                             <DropdownToggle nav>
-                                <img src={avatar1} alt="EditChat" className="profile-user rounded-circle" />
+                                <img src={avatar1} alt="ChatAlike" className="profile-user rounded-circle" />
                             </DropdownToggle>
                             <DropdownMenu className="dropdown-menu-end">
                                 <DropdownItem onClick={() => { toggleTab('profile'); }}>Profile <i className="ri-profile-line float-end text-muted"></i></DropdownItem>

@@ -71,7 +71,7 @@ function Profile(props) {
             <img
               src={avatar1}
               className="rounded-circle avatar-lg img-thumbnail"
-              alt="EditChat"
+              alt="ChatAlike"
             />
           </div>
 

@@ -52,7 +52,7 @@ const Login = (props) => {
         return <Navigate to="/" />;
     }
 
-    document.title = "Login | EditChat React - Responsive Bootstrap 5 Chat App"
+    document.title = "Login | ChatAlike React - Responsive Bootstrap 5 Chat App"
 
     return (
         <React.Fragment>
@@ -68,7 +68,7 @@ const Login = (props) => {
                                 </Link>
 
                                 <h4>{t('Sign in')}</h4>
-                                <p className="text-muted mb-4">{t('Sign in to continue to EditChat')}.</p>
+                                <p className="text-muted mb-4">{t('Sign in to continue to ChatAlike')}.</p>
 
                             </div>
 
@@ -147,7 +147,7 @@ const Login = (props) => {
 
                             <div className="mt-5 text-center">
                                 <p>{t("Don't have an account")} ? <Link to="/register" className="font-weight-medium text-primary"> {t('Signup now')} </Link> </p>
-                                <p>© {new Date().getFullYear()} {t('EditChat')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
+                                <p>© {new Date().getFullYear()} {t('ChatAlike')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
                             </div>
                         </Col>
                     </Row>

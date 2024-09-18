@@ -79,7 +79,7 @@ const Register = (props) => {
         dispatch(apiError(""));
     }, [dispatch]);
 
-    document.title = "Register | EditChat React - Responsive Bootstrap 5 Chat App"
+    document.title = "Register | ChatAlike React - Responsive Bootstrap 5 Chat App"
 
 
     return (
@@ -96,7 +96,7 @@ const Register = (props) => {
                                 </Link>
 
                                 <h4>{t('Register')}</h4>
-                                <p className="text-muted mb-4">{t('Get your EditChat account now')}.</p>
+                                <p className="text-muted mb-4">{t('Get your ChatAlike account now')}.</p>
 
                             </div>
 
@@ -197,7 +197,7 @@ const Register = (props) => {
                                         </div>
 
                                         <div className="mt-4 text-center">
-                                            <p className="text-muted mb-0">{t('By registering you agree to the EditChat')} <Link to="#" className="text-primary">{t('Terms of Use')}</Link></p>
+                                            <p className="text-muted mb-0">{t('By registering you agree to the ChatAlike')} <Link to="#" className="text-primary">{t('Terms of Use')}</Link></p>
                                         </div>
 
                                     </Form>
@@ -206,7 +206,7 @@ const Register = (props) => {
 
                             <div className="mt-5 text-center">
                                 <p>{t('Already have an account')} ? <Link to="login" className="font-weight-medium text-primary"> {t('Signin')} </Link> </p>
-                                <p>© {new Date().getFullYear()} {t('EditChat')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
+                                <p>© {new Date().getFullYear()} {t('ChatAlike')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
                             </div>
                         </Col>
                     </Row>

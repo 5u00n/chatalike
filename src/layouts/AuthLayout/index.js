@@ -31,7 +31,7 @@ class Index extends Component {
         // let currentage = this.capitalizeFirstLetter(this.props.router.location.pathname);
 
         //set document title according to page path name
-        // document.title = currentage + " | EditChat - Responsive Bootstrap 5 Admin Dashboard";
+        // document.title = currentage + " | ChatAlike - Responsive Bootstrap 5 Admin Dashboard";
     }
     
     render() {

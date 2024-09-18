@@ -30,7 +30,7 @@ function LockScreen(props) {
         },
     });
 
-    document.title = "Lockscreen | EditChat React - Responsive Bootstrap 5 Chat App"
+    document.title = "Lockscreen | ChatAlike React - Responsive Bootstrap 5 Chat App"
 
 
     return (
@@ -94,7 +94,7 @@ function LockScreen(props) {
 
                         <div className="mt-5 text-center">
                             <p>{t('Not you')} ? {t('return')} <Link to="login" className="font-weight-medium text-primary"> {t('Signin')} </Link> </p>
-                            <p>© {new Date().getFullYear()} {t('EditChat')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
+                            <p>© {new Date().getFullYear()} {t('ChatAlike')}. {t('Crafted with')} <i className="mdi mdi-heart text-danger"></i> {t('by Themesbrand')}</p>
                         </div>
                     </Col>
                 </Row>

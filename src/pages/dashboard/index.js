@@ -9,7 +9,7 @@ class Index extends Component {
 
     
     render() {
-        document.title = "Chat | EditChat - Responsive Bootstrap 5 Admin Dashboard"
+        document.title = "Chat | ChatAlike - Responsive Bootstrap 5 Admin Dashboard"
 
         return (
             <React.Fragment>
