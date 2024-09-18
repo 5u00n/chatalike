@@ -18,6 +18,8 @@ import logodark from "../../assets/images/logo-dark.png";
 import logolight from "../../assets/images/logo-light.png";
 import { createSelector } from 'reselect';
 
+import logo from "../../assets/images/logo.svg"
+
 /**
  * Register component
  * @param {*} props 
@@ -37,7 +39,11 @@ const Register = (props) => {
         initialValues: {
             username: '',
             email: '',
-            password: ''
+            password: '',
+            photoFile: [],
+            profileImage: "",
+            photoURL: "",
+            about: "",
         },
         validationSchema: Yup.object({
             username: Yup.string().required('Required'),
@@ -120,6 +126,19 @@ const Register = (props) => {
                                                 <div>{error}</div>
                                             </Alert>
                                         ) : null}
+
+                                        <div className="mb-3">
+                                            <div className="d-flex align-items-center justify-content-center">
+                                                <img src={formik.values.profileImage?formik.values.profileImage:logo} alt="profile" className="rounded-circle avatar-lg " />
+                                            </div>
+                                            <Label className="form-label">{t('Profile Image')}</Label>
+                                            <Input type="file" id="photoFile" name="photoFile" className="form-control" onChange={(event) => {
+                                                formik.setFieldValue("photoFile", event.currentTarget.files[0]);
+                                                formik.setFieldValue("profileImage", URL.createObjectURL(event.currentTarget.files[0]));
+                                            }} />
+                                        </div>
+
+
                                         <div className="mb-3">
                                             <Label className="form-label">{t('Email')}</Label>
                                             <InputGroup className="input-group bg-soft-light rounded-3 mb-3">
@@ -189,6 +208,14 @@ const Register = (props) => {
 
                                             </InputGroup>
                                         </FormGroup>
+
+
+                                        <div className="mb-3">
+                                            <Label className="form-label">{t('About')}</Label>
+                                            <Input type="textarea" id="about" name="about" className="form-control" onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.about} placeholder='Write Something about Yourself.'/>
+                                        </div>
+
+
 
 
                                         <div className="d-grid">

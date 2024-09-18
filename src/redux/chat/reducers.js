@@ -33,7 +33,7 @@ const INIT_STATE = {
     users: [
         //admin is sender and user in receiver
         {
-            id: 0, name: "Patrick Hendricks", profilePicture: avatar2, status: "online", unRead: 0, roomType: "contact", isGroup: false,
+            id: 0, name: "Sam Hendricks", profilePicture: avatar2, status: "online", unRead: 0, roomType: "contact", isGroup: false,
             messages: [
                 { id: 1, message: "hi", time: "01:05", userType: "receiver", isImageMessage: false, isFileMessage: false },
                 { id: 2, message: "hi patrick", time: "10.00", userType: "sender", isImageMessage: false, isFileMessage: false },

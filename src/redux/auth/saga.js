@@ -40,6 +40,7 @@ function* login({ payload: { username, password, history } }) {
     try {
         if(process.env.REACT_APP_DEFAULTAUTH === "firebase") {
             const response = yield call(fireBaseBackend.loginUser, username, password);
+            localStorage.setItem("authUser", JSON.stringify(response));
             yield put(loginUserSuccess(response));
             
         } else {
@@ -78,7 +79,10 @@ function* register({ payload: { user } }) {
         const email = user.email;
         const password = user.password;
         if(process.env.REACT_APP_DEFAULTAUTH === "firebase"){
-            const response = yield call(fireBaseBackend.registerUser, email, password);
+            const response = yield call(fireBaseBackend.registerUser, email, password,user);
+            user.id=response.user.uid;
+           // const dataResponce = yield call(fireBaseBackend.setupIfNoUserData,user);
+
             yield put(registerUserSuccess(response));
         } else {
             const response = yield call(create, '/register', user);

@@ -29,11 +29,65 @@ function* handleFullUserSaga(action) {
   }
 }
 
+function * handleChatUserSaga(action) {
+  try {
+    const firebaseBackend = getFirebaseBackend();
+    const database = firebaseBackend.getDatabase();
+    const snapshot = yield call(() => database.ref('/').get());
+    const data = snapshot.val();
+    const convertedData = yield call(convertFirebaseDataToState, data);
+    yield put(chatUser(convertedData));
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+}
+
+function * handleActiveUserSaga(action) {
+  try {
+    const firebaseBackend = getFirebaseBackend();
+    const database = firebaseBackend.getDatabase();
+    const snapshot = yield call(() => database.ref('/').get());
+    const data = snapshot.val();
+    const convertedData = yield call(convertFirebaseDataToState, data);
+    yield put(activeUser(convertedData));
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+}
+
+function * handleAddLoggedUserSaga(action) {
+  try {
+    const firebaseBackend = getFirebaseBackend();
+    const database = firebaseBackend.getDatabase();
+    const snapshot = yield call(() => database.ref('/').get());
+    const data = snapshot.val();
+    const convertedData = yield call(convertFirebaseDataToState, data);
+    yield put(addLoggedinUser(convertedData));
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+}
+
+function * handleCreateGroupSaga(action) {
+  try {
+    const firebaseBackend = getFirebaseBackend();
+    const database = firebaseBackend.getDatabase();
+    const snapshot = yield call(() => database.ref('/').get());
+    const data = snapshot.val();
+    const convertedData = yield call(convertFirebaseDataToState, data);
+    yield put(createGroup(convertedData));
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+}
+
+// Watcher Sagas
+
 function* watchFetchData() {
   yield takeLatest(FULL_USER, handleFullUserSaga);
 }
 
-/*/ Watcher Sagas
+// Watcher Sagas
 function* watchChatUser() {
   yield takeLatest(CHAT_USER, handleChatUserSaga);
 }
@@ -49,12 +103,17 @@ function* watchAddLoggedUser() {
 function* watchCreateGroup() {
   yield takeLatest(CREATE_GROUP, handleCreateGroupSaga);
 }
-*/
+
 
 export default function* chatSaga() {
   yield all([
     fork(watchFetchData),
     // Add other watchers here
+    fork(watchChatUser),
+    fork(watchActiveUser),
+    fork(watchAddLoggedUser),
+    fork(watchCreateGroup)
+    
   ]);
 }
 
