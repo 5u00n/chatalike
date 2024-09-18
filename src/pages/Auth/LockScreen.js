@@ -30,7 +30,7 @@ function LockScreen(props) {
         },
     });
 
-    document.title = "Lockscreen | ChatAlike React - Responsive Bootstrap 5 Chat App"
+    document.title = "Lockscreen | ChatAlike"
 
 
     return (

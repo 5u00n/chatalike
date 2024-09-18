@@ -79,7 +79,7 @@ const Register = (props) => {
         dispatch(apiError(""));
     }, [dispatch]);
 
-    document.title = "Register | ChatAlike React - Responsive Bootstrap 5 Chat App"
+    document.title = "Register | ChatAlike"
 
 
     return (

@@ -50,7 +50,7 @@ const ForgetPassword = (props) => {
         return <Navigate to="/" />;
     }
 
-    document.title = "Forgot Password | ChatAlike React - Responsive Bootstrap 5 Chat App"
+    document.title = "Forgot Password | ChatAlike"
 
 
     return (

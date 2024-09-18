@@ -36,7 +36,7 @@ const Logout = (props) => {
     return <Navigate to="/login" />;
   }
 
-  document.title = "Logout | ChatAlike React - Responsive Bootstrap 5 Chat App"
+  document.title = "Logout | ChatAlike"
 
   return (<React.Fragment></React.Fragment>)
 }

@@ -52,7 +52,7 @@ const Login = (props) => {
         return <Navigate to="/" />;
     }
 
-    document.title = "Login | ChatAlike React - Responsive Bootstrap 5 Chat App"
+    document.title = "Login | ChatAlike"
 
     return (
         <React.Fragment>
