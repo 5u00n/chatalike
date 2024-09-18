@@ -3,6 +3,8 @@ import withRouter from "../../components/withRouter";
 import { connect } from "react-redux"
 import PropTypes from "prop-types";
 import { changeLayoutMode } from '../../redux/actions';
+import { fetchDataRequest } from '../../redux/actions';
+import { useEffect } from 'react';
 
 //Import Components
 import LeftSidebarMenu from "./LeftSidebarMenu";
@@ -33,6 +35,8 @@ class Index extends Component {
         //set document title according to page path name
         // document.title = currentage + " | ChatAlike - Responsive Bootstrap 5 Admin Dashboard";
     }
+
+   
     
     render() {
         return (
@@ -57,4 +61,4 @@ const mapStateToProps = state => {
     return { layoutMode };
   };
 
-export default withRouter(connect(mapStateToProps, { changeLayoutMode })(Index))
+export default withRouter(connect(mapStateToProps, { changeLayoutMode ,fetchDataRequest})(Index))

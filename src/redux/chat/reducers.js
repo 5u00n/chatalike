@@ -1,9 +1,4 @@
-import {
-    CHAT_USER, ACTIVE_USER, FULL_USER, ADD_LOGGED_USER, CREATE_GROUP
-} from './constants';
-
-
-
+import { CHAT_USER, ACTIVE_USER, FULL_USER, ADD_LOGGED_USER, CREATE_GROUP } from "./constants";
 
 //Import Images
 import avatar2 from "../../assets/images/users/avatar-2.jpg";
@@ -18,16 +13,13 @@ import img1 from "../../assets/images/small/img-1.jpg";
 import img2 from "../../assets/images/small/img-2.jpg";
 import img7 from "../../assets/images/small/img-7.jpg";
 
-
-/*
-
 const INIT_STATE = {
-    active_user: 3,
-    users: [], // Initial users set to empty array
-    groups: [], // Initial groups set to empty array
-    contacts: [] // Initial contacts set to empty array
+  active_user: 0,
+  users: [], // Initial users set to empty array
+  groups: [], // Initial groups set to empty array
+  contacts: [], // Initial contacts set to empty array
 };
-*/
+/*
 const INIT_STATE = {
     active_user: 3,
     users: [
@@ -257,48 +249,47 @@ const INIT_STATE = {
         { id: 19, name: "Steve Walker" },
         { id: 20, name: "Hanah Mile" },
     ]
-};
+};*/
 
 const Chat = (state = INIT_STATE, action) => {
-    switch (action.type) {
-        case CHAT_USER:
-            return { ...state };
+  switch (action.type) {
+    case CHAT_USER:
+      return { ...state };
 
-        case ACTIVE_USER:
-            return {
-                ...state,
-                active_user: action.payload
-            };
+    case ACTIVE_USER:
+      return {
+        ...state,
+        active_user: action.payload,
+      };
 
-        /*case FULL_USER:
+    /*case FULL_USER:
             return { 
                 ...state,
                 users : action.payload 
             };*/
-        case FULL_USER:
-            return {
-                ...state,
-                users: action.payload
-            };
+    case FULL_USER:
+      return {
+        ...state,
+        users: action.payload,
+      };
 
-        case ADD_LOGGED_USER:
-            const newUser = action.payload
-            return {
-                ...state, users: [
-                    ...state.users, newUser
-                ]
-            };
+    case ADD_LOGGED_USER:
+      const newUser = action.payload;
+      return {
+        ...state,
+        users: [...state.users, newUser],
+      };
 
-        case CREATE_GROUP:
-            const newGroup = action.payload
-            return {
-                ...state, groups: [
-                    ...state.groups, newGroup
-                ]
-            }
+    case CREATE_GROUP:
+      const newGroup = action.payload;
+      return {
+        ...state,
+        groups: [...state.groups, newGroup],
+      };
 
-        default: return { ...state };
-    }
-}
+    default:
+      return { ...state };
+  }
+};
 
 export default Chat;

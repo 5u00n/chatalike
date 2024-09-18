@@ -71,21 +71,21 @@ function UserProfileSidebar(props) {
 
                     <div className="mb-4 d-flex justify-content-center">
                         {
-                            props.activeUser.profilePicture === "Null" ?
+                            props.activeUser?.profilePicture === "Null" ?
                                 <div className="avatar-lg">
                                     <span className="avatar-title rounded-circle bg-primary-subtle text-primary font-size-24">
                                         {props.activeUser.name.charAt(0)}
                                     </span>
                                 </div>
-                                : <img src={props.activeUser.profilePicture} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
+                                : <img src={props.activeUser?.profilePicture} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
                         }
 
                     </div>
 
-                    <h5 className="font-size-16 mb-1 text-truncate">{props.activeUser.name}</h5>
+                    <h5 className="font-size-16 mb-1 text-truncate">{props.activeUser?.name}</h5>
                     <p className="text-muted text-truncate mb-1">
                         {(() => {
-                            switch (props.activeUser.status) {
+                            switch (props.activeUser?.status) {
                                 case "online":
                                     return (
                                         <>
@@ -135,12 +135,12 @@ function UserProfileSidebar(props) {
 
                                 <div>
                                     <p className="text-muted mb-1">{t('Name')}</p>
-                                    <h5 className="font-size-14">{props.activeUser.name}</h5>
+                                    <h5 className="font-size-14">{props.activeUser?.name}</h5>
                                 </div>
 
                                 <div className="mt-4">
                                     <p className="text-muted mb-1">{t('Email')}</p>
-                                    <h5 className="font-size-14">{props.activeUser.email}</h5>
+                                    <h5 className="font-size-14">{props.activeUser?.email}</h5>
                                 </div>
 
                                 <div className="mt-4">
@@ -171,7 +171,7 @@ function UserProfileSidebar(props) {
                         </Card>
 
                         {
-                            props.activeUser.isGroup === true &&
+                            props.activeUser?.isGroup === true &&
                             <Card className="mb-1 shadow-none border">
                                 {/* import collaps */}
                                 <CustomCollapse

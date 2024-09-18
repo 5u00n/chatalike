@@ -1,5 +1,7 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { Routes as SwitchRoute, Route, Navigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { fetchDataRequest } from '../redux/actions';
 
 //import routes
 import { authProtectedRoutes, publicRoutes } from './routes';
@@ -22,10 +24,18 @@ const AuthProtected = (props) => {
     return <>{props.children}</>;
   };
 
+
+
 /**
  * Main Route component
  */
 const Routes = () => {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(fetchDataRequest());
+      }, [dispatch]);
 
     return (
         // rendering the router with layout

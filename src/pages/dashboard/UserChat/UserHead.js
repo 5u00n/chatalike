@@ -52,9 +52,9 @@ function UserHead(props) {
                                     <i className="ri-arrow-left-s-line"></i></Link>
                             </div>
                             {
-                                props.users[props.active_user].profilePicture !== "Null" ?
+                                props.users[props.active_user]?.profilePicture !== "Null" ?
                                     <div className="me-3 ms-0">
-                                        <img src={props.users[props.active_user].profilePicture} className="rounded-circle avatar-xs" alt="ChatAlike" />
+                                        <img src={props.users[props.active_user]?.profilePicture} className="rounded-circle avatar-xs" alt="ChatAlike" />
                                     </div>
                                     : <div className="chat-user-img align-self-center me-3">
                                         <div className="avatar-xs">
@@ -68,10 +68,10 @@ function UserHead(props) {
                             <div className="flex-grow-1 overflow-hidden">
                                 <h5 className="font-size-16 mb-0 text-truncate">
                                     <Link to="#" onClick={(e) => openUserSidebar(e)} className="text-reset user-profile-show">
-                                        {props.users[props.active_user].name}
+                                        {props.users[props.active_user]?.name}
                                     </Link>
                                     {(() => {
-                                        switch (props.users[props.active_user].status) {
+                                        switch (props.users[props.active_user]?.status) {
                                             case "online":
                                                 return (
                                                     <>

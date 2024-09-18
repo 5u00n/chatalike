@@ -29,6 +29,21 @@ function* handleFullUserSaga(action) {
   }
 }
 
+
+function* handleFetchDataRequest(action) {
+  try {
+    const firebaseBackend = getFirebaseBackend();
+    const database = firebaseBackend.getDatabase();
+    const snapshot = yield call(() => database.ref('/').get());
+    const data = snapshot.val();
+    const convertedData = yield call(convertFirebaseDataToState, data);
+    yield put(setFullUser(convertedData));
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+}
+
+
 function * handleChatUserSaga(action) {
   try {
     const firebaseBackend = getFirebaseBackend();
@@ -83,7 +98,7 @@ function * handleCreateGroupSaga(action) {
 
 // Watcher Sagas
 
-function* watchFetchData() {
+function* watchFullUser() {
   yield takeLatest(FULL_USER, handleFullUserSaga);
 }
 
@@ -104,6 +119,11 @@ function* watchCreateGroup() {
   yield takeLatest(CREATE_GROUP, handleCreateGroupSaga);
 }
 
+function* watchFetchData() {
+  yield takeLatest(FETCH_DATA_REQUEST, handleFetchDataRequest);
+}
+
+
 
 export default function* chatSaga() {
   yield all([
@@ -112,8 +132,9 @@ export default function* chatSaga() {
     fork(watchChatUser),
     fork(watchActiveUser),
     fork(watchAddLoggedUser),
-    fork(watchCreateGroup)
-    
+    fork(watchCreateGroup),
+    fork(watchFullUser),
+
   ]);
 }
 

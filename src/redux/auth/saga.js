@@ -80,7 +80,7 @@ function* register({ payload: { user } }) {
         const password = user.password;
         if(process.env.REACT_APP_DEFAULTAUTH === "firebase"){
             const response = yield call(fireBaseBackend.registerUser, email, password,user);
-            user.id=response.user.uid;
+            //user.id=response.user.uid;
            // const dataResponce = yield call(fireBaseBackend.setupIfNoUserData,user);
 
             yield put(registerUserSuccess(response));
