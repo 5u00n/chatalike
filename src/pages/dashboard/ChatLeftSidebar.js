@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 
 import { TabContent, TabPane } from "reactstrap";
 
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
+
 //Import Components
 import Profile from "./Tabs/Profile";
 import Chats from "./Tabs/Chats";
@@ -14,6 +18,25 @@ function ChatLeftSidebar(props) {
 
     const activeTab = props.activeTab;
 
+
+    const AllUsers = useSelector((state) => state.Chat.users);
+    const userUID = useSelector((state) => state.Auth.user.uid);
+  
+    const [userData, setUserData] = useState({
+      name: "",
+      email: "",
+      profilePicture: "",
+      time: "",
+      location: "",
+    });
+  
+    useEffect(() => {
+      if (AllUsers && userUID) {
+        const user = Object.values(AllUsers).find((user) => user.id === userUID);
+        setUserData(user);
+      }
+    }, [AllUsers, userUID]);
+
     return (
         <React.Fragment>
             <div className="chat-leftsidebar me-lg-1">
@@ -22,14 +45,14 @@ function ChatLeftSidebar(props) {
                     {/* Start Profile tab-pane */}
                     <TabPane tabId="profile" id="pills-user"   >
                         {/* profile content  */}
-                        <Profile />
+                        <Profile userData={userData} />
                     </TabPane>
                     {/* End Profile tab-pane  */}
 
                     {/* Start chats tab-pane  */}
                     <TabPane tabId="chat" id="pills-chat">
                         {/* chats content */}
-                        <Chats recentChatList={props.recentChatList} />
+                        <Chats recentChatList={props.recentChatList} userData={userData} />
                     </TabPane>
                     {/* End chats tab-pane */}
 
@@ -48,9 +71,9 @@ function ChatLeftSidebar(props) {
                     {/* End contacts tab-pane */}
 
                     {/* Start settings tab-pane */}
-                    <TabPane tabId="settings" id="pills-setting">
+                    <TabPane tabId="settings" id="pills-setting" >
                         {/* Settings content */}
-                        <Settings />
+                        <Settings  userData={userData}/>
                     </TabPane>
                     {/* End settings tab-pane */}
                 </TabContent>

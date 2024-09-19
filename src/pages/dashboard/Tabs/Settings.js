@@ -53,6 +53,9 @@ function Settings(props) {
 
     const toggle = () => setDropdownOpen(!dropdownOpen);
 
+
+    const userData = props.userData;
+
     return (
         <React.Fragment>
             <div>
@@ -62,14 +65,14 @@ function Settings(props) {
 
                 <div className="text-center border-bottom p-4">
                     <div className="mb-4 profile-user">
-                        <img src={avatar1} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
+                        <img src={userData?.profilePicture} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
                         <Button type="button" color="light" className="avatar-xs p-0 rounded-circle profile-photo-edit">
                             <i className="ri-pencil-fill"></i>
                         </Button>
 
                     </div>  
 
-                    <h5 className="font-size-16 mb-1 text-truncate">{t('Patricia Smith')}</h5>
+                    <h5 className="font-size-16 mb-1 text-truncate">{userData?.name}</h5>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle} className="d-inline-block mb-1">
                         <DropdownToggle tag="a" className="text-muted pb-1 d-block" >
                             {t('Available')} <i className="mdi mdi-chevron-down"></i>
@@ -100,22 +103,22 @@ function Settings(props) {
 
                                 <div>
                                     <p className="text-muted mb-1">{t('Name')}</p>
-                                    <h5 className="font-size-14">{t('Patricia Smith')}</h5>
+                                    <h5 className="font-size-14">{userData?.name}</h5>
                                 </div>
 
                                 <div className="mt-4">
                                     <p className="text-muted mb-1">{t('Email')}</p>
-                                    <h5 className="font-size-14">{t('adc@123.com')}</h5>
+                                    <h5 className="font-size-14">{userData?.email}</h5>
                                 </div>
 
                                 <div className="mt-4">
                                     <p className="text-muted mb-1">{t('Time')}</p>
-                                    <h5 className="font-size-14">{t('11:40 AM')}</h5>
+                                    <h5 className="font-size-14">{userData?.time}</h5>
                                 </div>
 
                                 <div className="mt-4">
                                     <p className="text-muted mb-1">{t('Location')}</p>
-                                    <h5 className="font-size-14 mb-0">{t('California, USA')}</h5>
+                                    <h5 className="font-size-14 mb-0">{userData?.location}</h5>
                                 </div>
                             </CustomCollapse>
                             

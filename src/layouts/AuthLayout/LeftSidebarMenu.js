@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Nav, NavItem, NavLink, UncontrolledTooltip, Dropdown, DropdownItem, DropdownToggle, DropdownMenu } from "reactstrap";
 import classnames from "classnames";
@@ -77,6 +77,25 @@ function LeftSidebarMenu(props) {
         else if (lng === "eng")
             setlng("English");
     }
+
+
+    const AllUsers = useSelector((state) => state.Chat.users);
+    const userUID = useSelector((state) => state.Auth.user.uid);
+  
+    const [userData, setUserData] = useState({
+      name: "",
+      email: "",
+      profilePicture: "",
+      time: "",
+      location: "",
+    });
+  
+    useEffect(() => {
+      if (AllUsers && userUID) {
+        const user = Object.values(AllUsers).find((user) => user.id === userUID);
+        setUserData(user);
+      }
+    }, [AllUsers, userUID]);
 
     return (
         <React.Fragment>
@@ -193,7 +212,7 @@ function LeftSidebarMenu(props) {
                         </li>
                         <Dropdown nav isOpen={dropdownOpen} className="nav-item btn-group dropup profile-user-dropdown" toggle={toggle}>
                             <DropdownToggle className="nav-link mb-2" tag="a">
-                                <img src={avatar1} alt="" className="profile-user rounded-circle" />
+                                <img src={userData?.profilePicture} alt="" className="profile-user rounded-circle" />
                             </DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem onClick={() => { toggleTab('profile'); }}>Profile <i className="ri-profile-line float-end text-muted"></i></DropdownItem>

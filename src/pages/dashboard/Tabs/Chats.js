@@ -151,7 +151,7 @@ class Chats extends Component {
                     return chat.id === this.props?.userData?.uid ? (
                       <></>
                     ) : (
-                      <li key={key} id={"conversation" + key} className={chat.unRead ? "unread" : chat.isTyping ? "typing" : key === this.props.active_user ? "active" : ""}>
+                      <li key={key+chat.id} id={"conversation" + key} className={chat.unRead ? "unread" : chat.isTyping ? "typing" : key === this.props.active_user ? "active" : ""}>
                         <Link to="#" onClick={(e) => this.openUserChat(e, chat)}>
                           <div className="d-flex">
                             {chat.profilePicture === "Null" ? (

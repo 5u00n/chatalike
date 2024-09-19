@@ -10,7 +10,6 @@ import avatar1 from "../../../assets/images/users/avatar-1.jpg";
 
 //i18n
 import { useTranslation } from "react-i18next";
-import { useSelector } from "react-redux";
 
 function Profile(props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -38,17 +37,9 @@ function Profile(props) {
 
   const toggle = () => setDropdownOpen(!dropdownOpen);
 
-  const AllUsers = useSelector((state) => state.Chat.users);
-  const userUID = useSelector((state) => state.Auth.user.uid);
+  const userData = props.userData;
 
-  const [userData, setUserData] = useState({});
-
-  useEffect(() => {
-    if (AllUsers && userUID) {
-      const user = Object.values(AllUsers).find((user) => user.id === userUID);
-      setUserData(user);
-    }
-  }, [AllUsers, userUID]);
+  console.log("userData", userData);
 
   return (
     <React.Fragment>
@@ -72,10 +63,10 @@ function Profile(props) {
 
         <div className="text-center p-4 border-bottom">
           <div className="mb-4">
-            <img src={userData ? userData.profileImage : avatar1} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
+            <img src={userData ? userData.profilePicture : avatar1} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
           </div>
 
-          <h5 className="font-size-16 mb-1 text-truncate">{t("Patricia Smith")}</h5>
+          <h5 className="font-size-16 mb-1 text-truncate">{userData?.name}</h5>
           <p className="text-muted text-truncate mb-1">
             <i className="ri-record-circle-fill font-size-10 text-success me-1 d-inline-block"></i> {t("Active")}
           </p>
@@ -94,22 +85,22 @@ function Profile(props) {
               <CustomCollapse title="About" iconClass="ri-user-2-line" isOpen={isOpen1} toggleCollapse={toggleCollapse1}>
                 <div>
                   <p className="text-muted mb-1">{t("Name")}</p>
-                  <h5 className="font-size-14">{t("Patricia Smith")}</h5>
+                  <h5 className="font-size-14">{userData?.name}</h5>
                 </div>
 
                 <div className="mt-4">
                   <p className="text-muted mb-1">{t("Email")}</p>
-                  <h5 className="font-size-14">{t("adc@123.com")}</h5>
+                  <h5 className="font-size-14">{userData?.email}</h5>
                 </div>
 
                 <div className="mt-4">
                   <p className="text-muted mb-1">{t("Time")}</p>
-                  <h5 className="font-size-14">{t("11:40 AM")}</h5>
+                  <h5 className="font-size-14">{userData?.time}</h5>
                 </div>
 
                 <div className="mt-4">
                   <p className="text-muted mb-1">{t("Location")}</p>
-                  <h5 className="font-size-14 mb-0">{t("California, USA")}</h5>
+                  <h5 className="font-size-14 mb-0">{userData?.location}</h5>
                 </div>
               </CustomCollapse>
             </Card>
