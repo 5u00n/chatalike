@@ -50,9 +50,6 @@ function Profile(props) {
     }
   }, [AllUsers, userUID]);
 
-  console.log("AllUsers", AllUsers);
-  console.log("userUID", userUID);
-  console.log("userData", userData);
   return (
     <React.Fragment>
       <div>

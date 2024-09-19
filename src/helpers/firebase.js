@@ -31,7 +31,6 @@ class FirebaseAuthBackend {
         .createUserWithEmailAndPassword(email, password)
         .then(
           async (user) => {
-            console.log(user.user.uid);
             userData.id = user.user.uid;
             await this.setupIfNoUserData(userData);
             resolve(firebase.auth().currentUser);

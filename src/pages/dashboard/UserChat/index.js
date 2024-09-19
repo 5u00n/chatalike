@@ -37,8 +37,7 @@ function UserChat(props) {
   //userType must be required
   const [allUsers] = useState(props.recentChatList);
 
-  console.log("userchat", props.recentChatList);
-  const [chatMessages, setchatMessages] = useState(props?.recentChatList ? props?.recentChatList[props.active_user].messages : []);
+  const [chatMessages, setchatMessages] = useState(props?.recentChatList[props.active_user]?.messages ? props?.recentChatList[props.active_user]?.messages : []);
 
   useEffect(() => {
     setchatMessages(props.recentChatList?props.recentChatList[props.active_user]?.messages:null);

@@ -122,8 +122,6 @@ class Chats extends Component {
   //userData = this.props.userData;
 
   render() {
-
-    console.log(this.state.recentChatList);
     return (
       <React.Fragment>
         <div>
