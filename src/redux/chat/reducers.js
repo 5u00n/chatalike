@@ -1,4 +1,4 @@
-import { CHAT_USER, ACTIVE_USER, FULL_USER, ADD_LOGGED_USER, CREATE_GROUP } from "./constants";
+import { CHAT_USER, ACTIVE_USER, FULL_USER, ADD_LOGGED_USER, CREATE_GROUP, SUCCESS_DATA_REQUEST } from "./constants";
 
 //Import Images
 import avatar2 from "../../assets/images/users/avatar-2.jpg";
@@ -12,6 +12,7 @@ import img4 from "../../assets/images/small/img-4.jpg";
 import img1 from "../../assets/images/small/img-1.jpg";
 import img2 from "../../assets/images/small/img-2.jpg";
 import img7 from "../../assets/images/small/img-7.jpg";
+import { activeUser } from "./actions";
 
 const INIT_STATE = {
   active_user: 0,
@@ -260,6 +261,14 @@ const Chat = (state = INIT_STATE, action) => {
       return {
         ...state,
         active_user: action.payload,
+      };
+    case SUCCESS_DATA_REQUEST:
+      return {
+        ...state,
+        active_user: action.payload.activeUser || 0, // Update active_user slice
+        users: action.payload.users || [], // Update users slice
+        groups: action.payload.groups || [], // Update groups slice
+        contacts: action.payload.contacts || [], // Update contacts slice
       };
 
     /*case FULL_USER:

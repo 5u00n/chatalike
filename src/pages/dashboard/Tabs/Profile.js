@@ -1,11 +1,5 @@
-import React, { useState } from "react";
-import {
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  DropdownToggle,
-  Card,
-} from "reactstrap";
+import React, { useEffect, useState } from "react";
+import { Dropdown, DropdownMenu, DropdownItem, DropdownToggle, Card } from "reactstrap";
 
 //Import components
 import CustomCollapse from "../../../components/CustomCollapse";
@@ -16,6 +10,7 @@ import avatar1 from "../../../assets/images/users/avatar-1.jpg";
 
 //i18n
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
 
 function Profile(props) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -43,16 +38,28 @@ function Profile(props) {
 
   const toggle = () => setDropdownOpen(!dropdownOpen);
 
+  const AllUsers = useSelector((state) => state.Chat.users);
+  const userUID = useSelector((state) => state.Auth.user.uid);
+
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    if (AllUsers && userUID) {
+      const user = Object.values(AllUsers).find((user) => user.id === userUID);
+      setUserData(user);
+    }
+  }, [AllUsers, userUID]);
+
+  console.log("AllUsers", AllUsers);
+  console.log("userUID", userUID);
+  console.log("userData", userData);
   return (
     <React.Fragment>
       <div>
         <div className="px-4 pt-4">
           <div className="user-chat-nav float-end">
             <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-              <DropdownToggle
-                tag="a"
-                className="font-size-18 text-muted dropdown-toggle"
-              >
+              <DropdownToggle tag="a" className="font-size-18 text-muted dropdown-toggle">
                 <i className="ri-more-2-fill"></i>
               </DropdownToggle>
               <DropdownMenu className="dropdown-menu-end">
@@ -68,42 +75,26 @@ function Profile(props) {
 
         <div className="text-center p-4 border-bottom">
           <div className="mb-4">
-            <img
-              src={avatar1}
-              className="rounded-circle avatar-lg img-thumbnail"
-              alt="ChatAlike"
-            />
+            <img src={userData ? userData.profileImage : avatar1} className="rounded-circle avatar-lg img-thumbnail" alt="ChatAlike" />
           </div>
 
-          <h5 className="font-size-16 mb-1 text-truncate">
-            {t("Patricia Smith")}
-          </h5>
+          <h5 className="font-size-16 mb-1 text-truncate">{t("Patricia Smith")}</h5>
           <p className="text-muted text-truncate mb-1">
-            <i className="ri-record-circle-fill font-size-10 text-success me-1 d-inline-block"></i>{" "}
-            {t("Active")}
+            <i className="ri-record-circle-fill font-size-10 text-success me-1 d-inline-block"></i> {t("Active")}
           </p>
         </div>
         {/* End profile user  */}
-        
+
         {/* Start user-profile-desc */}
         <div className="p-4 user-profile-desc">
           <div className="text-muted">
-            <p className="mb-4">
-              {t(
-                "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual."
-              )}
-            </p>
+            <p className="mb-4">{t("If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual.")}</p>
           </div>
 
           <div id="profile-user-accordion-1" className="custom-accordion">
             <Card className="shadow-none border mb-2">
               {/* import collaps */}
-              <CustomCollapse
-                title="About"
-                iconClass="ri-user-2-line"
-                isOpen={isOpen1}
-                toggleCollapse={toggleCollapse1}
-              >
+              <CustomCollapse title="About" iconClass="ri-user-2-line" isOpen={isOpen1} toggleCollapse={toggleCollapse1}>
                 <div>
                   <p className="text-muted mb-1">{t("Name")}</p>
                   <h5 className="font-size-14">{t("Patricia Smith")}</h5>
@@ -129,12 +120,7 @@ function Profile(props) {
 
             <Card className="mb-1 shadow-none border">
               {/* import collaps */}
-              <CustomCollapse
-                title="Attached Files"
-                iconClass="ri-attachment-line"
-                isOpen={isOpen2}
-                toggleCollapse={toggleCollapse2}
-              >
+              <CustomCollapse title="Attached Files" iconClass="ri-attachment-line" isOpen={isOpen2} toggleCollapse={toggleCollapse2}>
                 {/* attached files */}
                 <AttachedFiles files={files} />
               </CustomCollapse>

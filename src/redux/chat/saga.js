@@ -8,7 +8,7 @@ import {
 } from './constants';
 
 import {
-    chatUser,activeUser,addLoggedinUser,createGroup,setFullUser
+    chatUser,activeUser,addLoggedinUser,createGroup,setFullUser, successDataRequest
 } from './actions';
 
 
@@ -37,7 +37,8 @@ function* handleFetchDataRequest(action) {
     const snapshot = yield call(() => database.ref('/').get());
     const data = snapshot.val();
     const convertedData = yield call(convertFirebaseDataToState, data);
-    yield put(setFullUser(convertedData));
+
+    yield put(successDataRequest(convertedData));
   } catch (error) {
     console.error("Error fetching data: ", error);
   }
@@ -140,9 +141,11 @@ export default function* chatSaga() {
 
 const convertFirebaseDataToState = firebaseData => {
   // Assuming firebaseData has 'users', 'groups', and 'contacts' as top-level keys
+
+  const active_user= firebaseData.active_user;
   const users = Object.values(firebaseData.users || {});
   const groups = Object.values(firebaseData.groups || {});
   const contacts = Object.values(firebaseData.contacts || {});
 
-  return { users, groups, contacts };
+  return { active_user,users, groups, contacts };
 };

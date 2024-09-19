@@ -188,7 +188,7 @@ class Groups extends Component {
 
 
                         <ul className="list-unstyled chat-list">
-                            {
+                            {this.state.groups && 
                                 this.state.groups.map((group, key) =>
                                     <li key={key} >
                                         <Link to="#">

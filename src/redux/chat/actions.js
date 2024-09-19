@@ -1,5 +1,5 @@
 import {
-    CHAT_USER, ACTIVE_USER, FULL_USER, ADD_LOGGED_USER, CREATE_GROUP,FETCH_DATA_REQUEST
+    CHAT_USER, ACTIVE_USER, FULL_USER, ADD_LOGGED_USER, CREATE_GROUP,FETCH_DATA_REQUEST, SUCCESS_DATA_REQUEST
 } from './constants';
 
 
@@ -48,3 +48,10 @@ export const fullUser = (payload) => {
         payload
     };
 };
+
+export const successDataRequest = (payload) => {
+    return {
+        type: SUCCESS_DATA_REQUEST,
+        payload
+    };
+}
